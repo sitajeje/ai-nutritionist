@@ -12,7 +12,7 @@ export async function POST(req: Request) {
 
     // 第一步：调用工具
     const toolResult = await generateText({
-      model: google('gemini-1.5-pro'),
+      model: google('gemini-2.5-flash'),
       messages: [{ role: 'user', content: userMessage }],
       tools: {
         search_nutrition: directSearchNutritionTool,
