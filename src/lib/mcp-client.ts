@@ -26,7 +26,7 @@ export class MCPNutritionClient {
         return; // 已经连接
         }
 
-        const serverPath = process.env.MCP_NUTRITION_SERVER_PATH;
+        let serverPath = process.env.MCP_NUTRITION_SERVER_PATH;
         
         if (!serverPath) {
         throw new Error('MCP_NUTRITION_SERVER_PATH not configured');
@@ -39,6 +39,10 @@ export class MCPNutritionClient {
             USDA_API_KEY: process.env.USDA_API_KEY,
         },
         });
+        // 在 Vercel 环境中使用正确的路径
+        if (process.env.VERCEL) {
+            serverPath = '/var/task/src/mcp-server/nutrition/dist/server.js';
+        }   
 
         // 创建传输层
         this.transport = new StdioClientTransport({
