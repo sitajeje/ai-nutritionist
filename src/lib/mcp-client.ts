@@ -1,21 +1,11 @@
 import { Client } from '@modelcontextprotocol/sdk/client/index.js';
 import { StdioClientTransport } from '@modelcontextprotocol/sdk/client/stdio.js';
-import { spawn } from 'child_process';
 
 interface ToolResult {
     content: Array<{
         type: string;
         text: string;
     }>;
-}
-// ✅ 添加超时工具函数
-function withTimeout<T>(promise: Promise<T>, ms: number): Promise<T> {
-    return Promise.race([
-        promise,
-        new Promise<T>((_, reject) => 
-        setTimeout(() => reject(new Error(`Timeout after ${ms}ms`)), ms)
-        ),
-    ]);
 }
 export class MCPNutritionClient {
     private client: Client | null = null;
@@ -32,13 +22,6 @@ export class MCPNutritionClient {
         throw new Error('MCP_NUTRITION_SERVER_PATH not configured');
         }
 
-        // 启动 MCP Server 进程
-        const serverProcess = spawn('node', [serverPath], {
-        env: {
-            ...process.env,
-            USDA_API_KEY: process.env.USDA_API_KEY,
-        },
-        });
         // 在 Vercel 环境中使用正确的路径
         if (process.env.VERCEL) {
             serverPath = '/var/task/src/mcp-server/nutrition/dist/server.js';

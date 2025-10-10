@@ -47,8 +47,8 @@ export async function POST(req: Request) {
       }
     }
 
-    console.log('📊 Tool data collected:', toolData.length, 'results');
-    console.log('📋 First tool data:', toolData[0]);
+    console.log('Tool data collected:', toolData.length, 'results');
+    console.log('First tool data:', toolData[0]);
     if (toolData.length === 0) {
       return Response.json({
         text: '抱歉，我无法获取营养数据。请稍后再试。',
@@ -61,7 +61,7 @@ export async function POST(req: Request) {
 
 基于以下营养数据，生成完整的中文回答：
 
-${toolData.map((data, i) => `数据${i + 1}：${JSON.stringify(data, null, 2)}`).join('\n\n')}
+${toolData.map((data, i) => `数据${i + 1}:${JSON.stringify(data, null, 2)}`).join('\n\n')}
 
 请计算总卡路里，并给出友好的营养分析。用自然的中文回答，包含具体数字。`;
 
@@ -70,7 +70,7 @@ ${toolData.map((data, i) => `数据${i + 1}：${JSON.stringify(data, null, 2)}`)
       prompt: summaryPrompt,
     });
 
-    console.log('✅ Final answer generated:', finalResult.text.length, 'chars');
+    console.log('Final answer generated:', finalResult.text.length, 'chars');
 
     return Response.json({
       text: finalResult.text,

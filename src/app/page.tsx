@@ -230,7 +230,7 @@ export default function Chat() {
                               <p className="font-bold text-purple-600">{carbs}g</p>
                             </div>
                           </div>
-                          <p className="text-xs text-gray-500 mt-2">📊 每100克的数据</p>
+                          <p className="text-xs text-gray-500 mt-2">每100克的数据</p>
                         </div>
                       );
                     }
