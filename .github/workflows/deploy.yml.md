@@ -1,8 +1,10 @@
-name: Deploy Production Fix to Vercel
+name: Deploy to Vercel
 
 on:
   push:
-    branches: [direct-usda-integration]
+    branches: [main]
+  pull_request:
+    branches: [main]
 
 jobs:
   test:
@@ -20,6 +22,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
       
+      - name: Build MCP Server
+        run: |
+          cd src/mcp-server/nutrition
+          npm ci
+          npm run build
+      
       - name: Type check
         run: npm run type-check
       
@@ -29,6 +37,7 @@ jobs:
   deploy:
     needs: test
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
