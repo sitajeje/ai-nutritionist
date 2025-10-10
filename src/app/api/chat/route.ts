@@ -55,7 +55,7 @@ ${toolData.map((data, i) => `数据${i + 1}：${JSON.stringify(data, null, 2)}`)
 请计算总卡路里，并给出友好的营养分析。用自然的中文回答，包含具体数字。`;
 
     const finalResult = await generateText({
-      model: google('gemini-1.5-pro'),
+      model: google('gemini-2.5-flash'),
       prompt: summaryPrompt,
     });
 
