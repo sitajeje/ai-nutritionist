@@ -24,7 +24,7 @@ jobs:
       
       - name: Build MCP Server
         run: |
-          cd mcp-server/nutrition
+          cd src/mcp-server/nutrition
           npm ci
           npm run build
       
