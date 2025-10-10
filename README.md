@@ -23,7 +23,7 @@ AI Dessert Nutritionist is an intelligent nutrition analysis tool designed speci
 - **AI SDK 5.x** - AI model integration
 
 ### Backend
-- **Google Gemini 1.5 Pro** - Large language model
+- **Google Gemini 2.5 Flash** - Large language model
 - **MCP (Model Context Protocol)** - Modular tool calling architecture
 - **Node.js** - Server runtime
 - **USDA FoodData Central API** - Nutrition data source
