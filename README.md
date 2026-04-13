@@ -1,4 +1,4 @@
-# AI Dessert Nutritionist
+# AI Nutritionist
 
 An AI-powered dessert nutrition calculator that helps users accurately calculate calories and nutritional values of baking recipes.
 
